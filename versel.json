@@ -1,7 +1,19 @@
 {
-    "scripts": {
-      "build": "rimraf public/bundle.* && rollup --config",
-      "postinstall": "npm run build",
-      "start": "node index.js"
-    }
-  }
+    "version": 2,
+    "builds": [
+        {
+            "src": "index.js",
+            "use": "@vercel/node"
+        },
+        {
+            "src": "src/*.njk",
+            "use": "@snek-at/vercel-nunjucks"
+        }
+    ],
+    "routes": [
+        {
+            "src": "/(.*)",
+            "dest": "/index.js"
+        }
+    ]
+}
