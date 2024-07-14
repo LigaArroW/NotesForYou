@@ -1,12 +1,7 @@
 {
-    "builds": [
-        { "src": "public/**", "use": "@now/static" },
-        { "src": "views/**", "use": "@now/static" },
-        { "src": "index.js", "use": "@now/node" },
-        { "src": "note.js", "use": "@now/node" }
-    ],
-    "routes": [
-        { "handle": "filesystem" }
-    ],
-    "functions": { "api/**/*.js": { "runtime": "nodejs12.x" } }
-}
+    "scripts": {
+      "build": "rimraf public/bundle.* && rollup --config",
+      "postinstall": "npm run build",
+      "start": "node index.js"
+    }
+  }
