@@ -1,6 +1,6 @@
 {
     "scripts": {
-        "build": "rimraf public/bundle.* && rollup --config",
+        "build": "cp -r * public/ && rollup --config",
         "postbuild": "node index.js"
     }
 }
