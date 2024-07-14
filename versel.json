@@ -1,6 +1,12 @@
 {
-    "scripts": {
-        "build": "cp -r * public/ && rollup --config",
-        "postbuild": "node index.js"
-    }
+    "builds": [
+        { "src": "public/**", "use": "@now/static" },
+        { "src": "views/**", "use": "@now/static" },
+        { "src": "index.js", "use": "@now/node" },
+        { "src": "note.js", "use": "@now/node" }
+    ],
+    "routes": [
+        { "handle": "filesystem" }
+    ],
+    "functions": { "api/**/*.js": { "runtime": "nodejs12.x" } }
 }
