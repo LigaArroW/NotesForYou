@@ -85,7 +85,7 @@ const auth = () => async (req, res, next) => {
 passport.use(new GoogleStrategy({
   clientID: process.env.GOOGLE_CLIENT_ID,
   clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-  callbackURL:process.env.GOOGLE_CLIENT_URL
+  callbackURL: process.env.GOOGLE_CLIENT_URL
 },
   async function (accessToken, refreshToken, profile, cb) {
     const user = await DB.collection("users").findOne({ username: profile.emails[0].value });
@@ -219,4 +219,6 @@ app.listen(port, () => {
   console.log(`Server started on port http://localhost:${port}`);
 })
 
+
+module.exports = app;
 
